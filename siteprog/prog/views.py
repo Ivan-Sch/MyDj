@@ -11,3 +11,8 @@ def index(request):  # Class HttpRequest
 
 def categories(request):
     return HttpResponse("<h1>Темы по категориям</h1>")
+
+
+def proger_date(request, year):
+    """Для конвертора класса FourDigitYearConverter"""
+    return HttpResponse(f"<h1>Программисты</h1> <p>года: {year}")
