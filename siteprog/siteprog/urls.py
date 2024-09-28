@@ -16,8 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from prog.views import page_not_found
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('prog.urls'))
 ]
+
+handler404 = page_not_found #обработчик при возникновении ошибки 404 (страница не найдена) - обращение к Http404() - РАБОТАЕТ КОГДА DEBUG = False
