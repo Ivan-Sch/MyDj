@@ -8,4 +8,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('cats/', views.categories, name='cats'),
     path('proger/<year4:year>/', views.proger_date, name='progdata'), #добавляем маршрут через конвертор для функции представления
+    path('about/', views.about, name='about')
 ]

@@ -7,8 +7,8 @@ from django.urls import reverse
 
 
 def index(request):  # Class HttpRequest
-    return HttpResponse("Вы на главной странице")
-
+    # return HttpResponse("Вы на главной странице")
+    return render(request, 'prog/index.html')
 
 def categories(request):
     """prog.views.path(/cats)"""
@@ -26,4 +26,9 @@ def proger_date(request, year):
 
 
 def page_not_found(request, exception):
+    """Для ошибки 404"""
     return HttpResponseNotFound("<h1>Страница не найдена</h1>")
+
+def about(request):
+    """О чем"""
+    return render(request, 'prog/about.html/')
