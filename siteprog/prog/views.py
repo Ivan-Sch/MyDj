@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponsePermanentRedirect
+from django.urls import reverse
 
 
 # Create your views here.
@@ -16,7 +17,12 @@ def categories(request):
 
 def proger_date(request, year):
     """Для конвертора класса FourDigitYearConverter"""
-    return HttpResponse(f"<h1>Программисты</h1> <p>года: {year}")
+    if year > 2024:
+        uri = reverse(proger_date, args=[2023]) #для назначения url маршрута (нельзя прописывать готовый URL маршрут)
+        return HttpResponsePermanentRedirect(uri) #возвращает постоянный адрес (перенаправляет на постоянный)
+        # return redirect(index) #перенаправляет- через данную ГИБКУЮ ф-ю, можно вызвать ф-ю представления, написать сразу маршрут, или через имя маршрута
+
+    return HttpResponse(f"<h1>Программисты</h1> <p>года: {year}</p>")
 
 
 def page_not_found(request, exception):
