@@ -6,25 +6,40 @@
     <title>Программист и его учебные материалы</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Главная</a></li>
-                <li><a href="/cats/">Категории</a></li>
-                <li><a href="/python/">Python</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">{{ title }}</a></li>
+            {% for dic in menu %}
+            <li><a href="{% url dic.url_name%}">{{ dic.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</header>
 
-    <main>
-        <section>
-            <h1>Добро пожаловать!</h1>
-            <p>Тестовый шаблон.</p>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2024 Программист и его учебные материалы</p>
-    </footer>
+<main>
+    <h1>Добро пожаловать!</h1>
+    <ul>
+        {% for i in author %}
+        {% if i.them_is_Python %}
+        <li>
+            <h2>{{ i.auth }}</h2>
+            <p>{{ i.content }}</p>
+            <p><a href="{% url 'author' i.id %}">Читать автора</a></p>
+            {% if not forloop.last %}
+            <hr>
+            {% endif %}
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+
+</main>
+
+
+<footer>
+    <p>&copy; 2024 Программист и его учебные материалы</p>
+</footer>
 </body>
 </html>

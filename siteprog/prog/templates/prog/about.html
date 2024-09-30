@@ -6,5 +6,10 @@
 </head>
 <body>
 
+{% if show_menu or menu|length >= 2 %}
+<p>{{show_menu}}</p>
+{% endif %}
+
+
 </body>
 </html>
