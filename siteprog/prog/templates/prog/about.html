@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>About</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-{% if show_menu or menu|length >= 2 %}
-<p>{{show_menu}}</p>
-{% endif %}
+{% block content %}
 
+<h2>{{ title }}</h2>
 
-</body>
-</html>
+{% endblock %}

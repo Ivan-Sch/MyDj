@@ -4,6 +4,7 @@ from django.urls import reverse
 
 # Create your views here.
 menu = [
+    {'title': "Главная страница", 'url_name': 'index'},
     {'title': "О сайте", 'url_name': 'about'},
     {'title': "Добавить статью", 'url_name': 'add_page'},
     {'title': "Обратная связь", 'url_name': 'contact'},
@@ -65,12 +66,8 @@ def page_not_found(request, exception):
 
 def about(request):
     """О сайте"""
-    data = {
-        'title': 'Главная страница',
-        'menu': ['main', 'addpage', 'contact', 'about'],
-        'show_menu': True,
-    }
-    return render(request, 'prog/about.html/', context=data)
+
+    return render(request, 'prog/about.html', context={'title': 'О сайте', 'menu':menu})
 
 def show_author(request, author_id):
     """Страница автора"""
